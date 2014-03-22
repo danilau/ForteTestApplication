@@ -10,6 +10,7 @@
 		62641C9918DE0A2800E2706E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 62641C9818DE0A2800E2706E /* Settings.bundle */; };
 		62641C9D18DE10A300E2706E /* rss.xml in Resources */ = {isa = PBXBuildFile; fileRef = 62641C9C18DE10A300E2706E /* rss.xml */; };
 		62641CA018DE19FB00E2706E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62641C9F18DE19FB00E2706E /* Main.storyboard */; };
+		62641CA318DE1B1400E2706E /* FTAXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 62641CA218DE1B1400E2706E /* FTAXMLParser.m */; };
 		62B2107A18DDFE66008ED1C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2107918DDFE66008ED1C1 /* Foundation.framework */; };
 		62B2107C18DDFE66008ED1C1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2107B18DDFE66008ED1C1 /* CoreGraphics.framework */; };
 		62B2107E18DDFE66008ED1C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2107D18DDFE66008ED1C1 /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 		62641C9818DE0A2800E2706E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		62641C9C18DE10A300E2706E /* rss.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = rss.xml; path = RSS/rss.xml; sourceTree = "<group>"; };
 		62641C9F18DE19FB00E2706E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = UI/Main.storyboard; sourceTree = "<group>"; };
+		62641CA118DE1B1400E2706E /* FTAXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTAXMLParser.h; path = RSS/FTAXMLParser.h; sourceTree = "<group>"; };
+		62641CA218DE1B1400E2706E /* FTAXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTAXMLParser.m; path = RSS/FTAXMLParser.m; sourceTree = "<group>"; };
 		62B2107618DDFE66008ED1C1 /* ForteTestApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForteTestApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B2107918DDFE66008ED1C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		62B2107B18DDFE66008ED1C1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,6 +93,8 @@
 		62641C9B18DE106200E2706E /* RSS */ = {
 			isa = PBXGroup;
 			children = (
+				62641CA118DE1B1400E2706E /* FTAXMLParser.h */,
+				62641CA218DE1B1400E2706E /* FTAXMLParser.m */,
 				62641C9C18DE10A300E2706E /* rss.xml */,
 			);
 			name = RSS;
@@ -279,6 +284,7 @@
 			files = (
 				62B2108C18DDFE66008ED1C1 /* FTAAppDelegate.m in Sources */,
 				62B2108818DDFE66008ED1C1 /* main.m in Sources */,
+				62641CA318DE1B1400E2706E /* FTAXMLParser.m in Sources */,
 				62B2108F18DDFE66008ED1C1 /* ForteTestApplication.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
