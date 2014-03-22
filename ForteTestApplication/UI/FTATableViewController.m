@@ -8,8 +8,13 @@
 
 #import "FTATableViewController.h"
 #import "FTATableViewCell.h"
+#import "FTAXMLParser.h"
 
 @interface FTATableViewController ()
+
+    @property BOOL isInItem;
+    @property BOOL isTitle;
+    @property BOOL isDescription;
 
 @end
 
@@ -17,6 +22,10 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    self.isInItem = NO;
+    self.isTitle = NO;
+    self.isDescription = NO;
+    
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -27,6 +36,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"%@", self.rssItems);
+    
+    FTAXMLParser *xmlParser = [[FTAXMLParser alloc] initWithWeb];
+    
+    xmlParser.delegate = self;
+    
+    //NSString *str = [[NSString alloc] initWithData:xmlParser.data encoding:NSUTF8StringEncoding];
+    
+    [xmlParser parse];
+    
+    //NSLog(@"%@", str);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -67,6 +88,48 @@
     return cell;
 }
 
+- (NSMutableDictionary *) rssItems{
+    if(_rssItems != nil) return _rssItems;
+    else return [[NSMutableDictionary alloc] init];
+}
+
+#pragma mark - XML Parser delegation
+
+//called when the document is parsed
+-(void)parserDidStartDocument:(NSXMLParser *)parser
+{
+    
+}
+
+//this is called for each xml element
+-(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
+{
+    if([elementName isEqualToString:@"item"]) self.isInItem = YES;
+    if([elementName isEqualToString:@"title"]) self.isTitle = YES;
+    if([elementName isEqualToString:@"description"]) self.isDescription = YES;
+    
+}
+
+-(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    if(self.isInItem && self.isTitle){
+        
+    }
+}
+
+//after each element it goes back to the parent after calling this method
+-(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    if([elementName isEqualToString:@"item"]) self.isInItem = NO;
+    if([elementName isEqualToString:@"title"]) self.isTitle = NO;
+    if([elementName isEqualToString:@"description"]) self.isDescription = NO;
+}
+
+-(void)parserDidEndDocument:(NSXMLParser *)parser
+{
+    
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

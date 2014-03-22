@@ -7,7 +7,6 @@
 //
 
 #import "FTAAppDelegate.h"
-#import "FTAXMLParser.h"
 
 @implementation FTAAppDelegate
 
@@ -17,8 +16,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    FTAXMLParser *xmlParser = [[FTAXMLParser alloc] initWithWeb];
-
     return YES;
 }
 

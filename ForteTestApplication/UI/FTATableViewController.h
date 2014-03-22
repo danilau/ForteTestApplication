@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FTATableViewController : UITableViewController
+@interface FTATableViewController : UITableViewController <NSXMLParserDelegate>
+
+@property (strong, nonatomic) NSMutableDictionary *rssItems;
 
 @end
