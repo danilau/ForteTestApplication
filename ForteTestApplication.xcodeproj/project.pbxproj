@@ -12,6 +12,7 @@
 		62641CA018DE19FB00E2706E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62641C9F18DE19FB00E2706E /* Main.storyboard */; };
 		62641CA318DE1B1400E2706E /* FTAXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 62641CA218DE1B1400E2706E /* FTAXMLParser.m */; };
 		62641CA718DE2E3200E2706E /* FTATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62641CA618DE2E3200E2706E /* FTATableViewController.m */; };
+		62641CAA18DE308400E2706E /* FTATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 62641CA918DE308400E2706E /* FTATableViewCell.m */; };
 		62B2107A18DDFE66008ED1C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2107918DDFE66008ED1C1 /* Foundation.framework */; };
 		62B2107C18DDFE66008ED1C1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2107B18DDFE66008ED1C1 /* CoreGraphics.framework */; };
 		62B2107E18DDFE66008ED1C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2107D18DDFE66008ED1C1 /* UIKit.framework */; };
@@ -47,6 +48,8 @@
 		62641CA218DE1B1400E2706E /* FTAXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTAXMLParser.m; path = RSS/FTAXMLParser.m; sourceTree = "<group>"; };
 		62641CA518DE2E3200E2706E /* FTATableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTATableViewController.h; path = UI/FTATableViewController.h; sourceTree = "<group>"; };
 		62641CA618DE2E3200E2706E /* FTATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTATableViewController.m; path = UI/FTATableViewController.m; sourceTree = "<group>"; };
+		62641CA818DE308400E2706E /* FTATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTATableViewCell.h; path = UI/FTATableViewCell.h; sourceTree = "<group>"; };
+		62641CA918DE308400E2706E /* FTATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTATableViewCell.m; path = UI/FTATableViewCell.m; sourceTree = "<group>"; };
 		62B2107618DDFE66008ED1C1 /* ForteTestApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForteTestApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B2107918DDFE66008ED1C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		62B2107B18DDFE66008ED1C1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +112,8 @@
 				62641C9F18DE19FB00E2706E /* Main.storyboard */,
 				62641CA518DE2E3200E2706E /* FTATableViewController.h */,
 				62641CA618DE2E3200E2706E /* FTATableViewController.m */,
+				62641CA818DE308400E2706E /* FTATableViewCell.h */,
+				62641CA918DE308400E2706E /* FTATableViewCell.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				62B2108818DDFE66008ED1C1 /* main.m in Sources */,
 				62641CA318DE1B1400E2706E /* FTAXMLParser.m in Sources */,
 				62B2108F18DDFE66008ED1C1 /* ForteTestApplication.xcdatamodeld in Sources */,
+				62641CAA18DE308400E2706E /* FTATableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
