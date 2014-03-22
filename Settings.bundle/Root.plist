@@ -16,12 +16,12 @@
 			<key>Titles</key>
 			<array>
 				<string>File</string>
-				<string>DB</string>
+				<string>Web</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<string>File</string>
-				<string>DB</string>
+				<string>Web</string>
 			</array>
 		</dict>
 		<dict>
