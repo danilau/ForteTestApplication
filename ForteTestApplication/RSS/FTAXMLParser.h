@@ -10,4 +10,10 @@
 
 @interface FTAXMLParser : NSXMLParser
 
+@property (strong, nonatomic) NSData* data;
+
+
+- (id)initWithFile; // create the parser from file
+- (id)initWithWeb; // create the parser from web
+
 @end
