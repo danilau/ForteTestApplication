@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    FTAXMLParser *xmlParser = [[FTAXMLParser alloc] initWithFile];
+    FTAXMLParser *xmlParser = [[FTAXMLParser alloc] initWithWeb];
 
     return YES;
 }

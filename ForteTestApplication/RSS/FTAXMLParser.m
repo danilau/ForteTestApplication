@@ -20,25 +20,27 @@
 }
 - (id)initWithWeb{
     
-    NSURL *url = [NSURL URLWithString:@"http://twitter.com/statuses/public_timeline.xml"];//url string to download
+    NSURL *url = [NSURL URLWithString:@"http://events.dev.by/rss"];
     
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url]; //set a request with the url
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; //start the connection and call connection methods from below
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+   #pragma unused(connection)
     
-    return nil;
+    return [self initWithData:self.data];
 }
 
 #pragma mark - URL connection methods implementation
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    self.data = [NSData dataWithData:data]; //append data from method call line to tweetsData tweetsData now holds xml file
-}
-
--(void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    //[[self delegate] parserDidFinishLoading];
+    NSLog(@"SDF");
+    
+    self.data = [NSData dataWithData:data];
+    
+    NSString *str = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@",str);
 }
 
 @end
