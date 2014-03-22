@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Get RSS data from</string>
+			<key>Key</key>
+			<string>rssSource</string>
+			<key>DefaultValue</key>
+			<string>File</string>
+			<key>Titles</key>
+			<array>
+				<string>File</string>
+				<string>DB</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>File</string>
+				<string>DB</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Enable console output</string>
+			<key>Key</key>
+			<string>consoleOutput</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Save RSS data to</string>
+			<key>Key</key>
+			<string>sourceForSaving</string>
+			<key>DefaultValue</key>
+			<string>File</string>
+			<key>Titles</key>
+			<array>
+				<string>File</string>
+				<string>DB</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>File</string>
+				<string>DB</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Load saved data from</string>
+			<key>Key</key>
+			<string>sourceForLoading</string>
+			<key>DefaultValue</key>
+			<string>File</string>
+			<key>Titles</key>
+			<array>
+				<string>File</string>
+				<string>DB</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>File</string>
+				<string>DB</string>
+			</array>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62641C9918DE0A2800E2706E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 62641C9818DE0A2800E2706E /* Settings.bundle */; };
 		62B2107A18DDFE66008ED1C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2107918DDFE66008ED1C1 /* Foundation.framework */; };
 		62B2107C18DDFE66008ED1C1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2107B18DDFE66008ED1C1 /* CoreGraphics.framework */; };
 		62B2107E18DDFE66008ED1C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B2107D18DDFE66008ED1C1 /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62641C9818DE0A2800E2706E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		62B2107618DDFE66008ED1C1 /* ForteTestApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForteTestApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B2107918DDFE66008ED1C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		62B2107B18DDFE66008ED1C1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,6 +86,7 @@
 		62B2106D18DDFE66008ED1C1 = {
 			isa = PBXGroup;
 			children = (
+				62641C9818DE0A2800E2706E /* Settings.bundle */,
 				62B2108118DDFE66008ED1C1 /* ForteTestApplication */,
 				62B2109E18DDFE66008ED1C1 /* ForteTestApplicationTests */,
 				62B2107818DDFE66008ED1C1 /* Frameworks */,
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62B2108618DDFE66008ED1C1 /* InfoPlist.strings in Resources */,
+				62641C9918DE0A2800E2706E /* Settings.bundle in Resources */,
 				62B2109118DDFE66008ED1C1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
