@@ -42,6 +42,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="date" destination="FR7-Fc-m13" id="Lik-aS-4i6"/>
+                                    <outlet property="title" destination="zgr-23-d2O" id="riJ-QR-ztC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

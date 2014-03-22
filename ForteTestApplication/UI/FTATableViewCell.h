@@ -10,4 +10,9 @@
 
 @interface FTATableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *title;
+
+@property (weak, nonatomic) IBOutlet UILabel *date;
+
+
 @end

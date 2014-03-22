@@ -7,6 +7,7 @@
 //
 
 #import "FTATableViewController.h"
+#import "FTATableViewCell.h"
 
 @interface FTATableViewController ()
 
@@ -46,20 +47,20 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 4;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FTACell" forIndexPath:indexPath];
+    FTATableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FTACell" forIndexPath:indexPath];
     
     // Configure the cell...
     
