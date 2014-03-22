@@ -10,6 +10,6 @@
 
 @interface FTATableViewController : UITableViewController <NSXMLParserDelegate>
 
-@property (strong, nonatomic) NSMutableDictionary *rssItems;
+@property (strong, nonatomic) NSMutableArray *rssItems;
 
 @end

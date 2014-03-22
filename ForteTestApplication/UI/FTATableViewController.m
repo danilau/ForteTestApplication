@@ -12,9 +12,13 @@
 
 @interface FTATableViewController ()
 
-    @property BOOL isInItem;
-    @property BOOL isTitle;
-    @property BOOL isDescription;
+@property BOOL isInItem;
+@property BOOL isTitle;
+@property BOOL isDate;
+@property BOOL isDescription;
+@property (nonatomic,strong) NSMutableString *titleBuf;
+@property (nonatomic,strong) NSMutableString *dateBuf;
+@property (nonatomic,strong) NSMutableString *descriptionBuf;
 
 @end
 
@@ -22,10 +26,6 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    self.isInItem = NO;
-    self.isTitle = NO;
-    self.isDescription = NO;
-    
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -37,9 +37,18 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"%@", self.rssItems);
+    FTAXMLParser *xmlParser = [[FTAXMLParser alloc] initWithFile];
     
-    FTAXMLParser *xmlParser = [[FTAXMLParser alloc] initWithWeb];
+    self.isInItem = NO;
+    self.isTitle = NO;
+    self.isDate = NO;
+    self.isDescription = NO;
+    
+    self.titleBuf = [NSMutableString stringWithFormat:@""];
+    self.dateBuf = [NSMutableString stringWithFormat:@""];
+    self.descriptionBuf = [NSMutableString stringWithFormat:@""];
+    
+    self.rssItems = [[NSMutableArray alloc] init];
     
     xmlParser.delegate = self;
     
@@ -73,9 +82,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 4;
+    return [self.rssItems count];
 }
 
 
@@ -83,29 +92,26 @@
 {
     FTATableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FTACell" forIndexPath:indexPath];
     
+    cell.title.text = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"title"];
+    cell.date.text = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"date"];
+    
     // Configure the cell...
     
     return cell;
 }
 
-- (NSMutableDictionary *) rssItems{
-    if(_rssItems != nil) return _rssItems;
-    else return [[NSMutableDictionary alloc] init];
-}
-
 #pragma mark - XML Parser delegation
 
-//called when the document is parsed
 -(void)parserDidStartDocument:(NSXMLParser *)parser
 {
     
 }
 
-//this is called for each xml element
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
 {
     if([elementName isEqualToString:@"item"]) self.isInItem = YES;
     if([elementName isEqualToString:@"title"]) self.isTitle = YES;
+    if([elementName isEqualToString:@"pubDate"]) self.isDate = YES;
     if([elementName isEqualToString:@"description"]) self.isDescription = YES;
     
 }
@@ -113,21 +119,41 @@
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
     if(self.isInItem && self.isTitle){
-        
+        [self.titleBuf appendString:string];
+    }
+    if(self.isInItem && self.isDate){
+        [self.dateBuf appendString:string];
+    }
+    if(self.isInItem && self.isDescription){
+        [self.descriptionBuf appendString:string];
     }
 }
 
-//after each element it goes back to the parent after calling this method
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    if([elementName isEqualToString:@"item"]) self.isInItem = NO;
+    if([elementName isEqualToString:@"item"]){
+         self.isInItem = NO;
+
+        NSMutableDictionary *bufDict = [[NSMutableDictionary alloc] init];
+        [bufDict setObject:[self.titleBuf copy] forKey:@"title"];
+        [bufDict setObject:[self.dateBuf copy] forKey:@"date"];
+        [bufDict setObject:[self.descriptionBuf copy] forKey:@"description"];
+        
+        [self.rssItems addObject:bufDict];
+        
+        [self.titleBuf setString:@""];
+        [self.dateBuf setString:@""];
+        [self.descriptionBuf setString:@""];
+
+        
+    }
     if([elementName isEqualToString:@"title"]) self.isTitle = NO;
+    if([elementName isEqualToString:@"pubDate"]) self.isDate = NO;
     if([elementName isEqualToString:@"description"]) self.isDescription = NO;
 }
 
 -(void)parserDidEndDocument:(NSXMLParser *)parser
 {
-    
     
 }
 
