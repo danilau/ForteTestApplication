@@ -5,6 +5,14 @@
     <description>dev.by: лента событий</description>
     <link>http://events.dev.by/rss</link>
     <item>
+        <title>Проверка источника XML</title>
+        <pubDate>Дата</pubDate>
+        <description>Файл
+        </description>
+        <link>http://events.dev.by/rush-2014-sorevnovanie-po-kartingu-sredi-it-kompaniy</link>
+        <guid>http://events.dev.by/rush-2014-sorevnovanie-po-kartingu-sredi-it-kompaniy</guid>
+    </item>
+    <item>
       <title>RUSH 2014 - Соревнование по картингу среди ИТ-компаний</title>
       <pubDate>Tue, 28 Jan 2014 14:51:08 +0300</pubDate>
       <description>

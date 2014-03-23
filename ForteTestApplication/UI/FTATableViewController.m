@@ -13,6 +13,8 @@
 
 @interface FTATableViewController ()
 
+@property BOOL consoleOutput;
+
 @property BOOL isInItem;
 @property BOOL isTitle;
 @property BOOL isDate;
@@ -38,7 +40,19 @@
 {
     [super viewDidLoad];
     
-    FTAXMLParser *xmlParser = [[FTAXMLParser alloc] initWithWeb];
+    NSString *rssSource = [[NSUserDefaults standardUserDefaults] objectForKey:@"rssSource"];
+    self.consoleOutput = [[NSUserDefaults standardUserDefaults]  boolForKey:@"consoleOutput"];
+   
+    FTAXMLParser *xmlParser;
+    
+    if([rssSource isEqualToString:@"File"]){
+        xmlParser = [[FTAXMLParser alloc] initWithFile];
+        if(self.consoleOutput) NSLog(@"Loading from file.");
+    }
+    else{
+        xmlParser = [[FTAXMLParser alloc] initWithWeb];
+        if(self.consoleOutput) NSLog(@"Loading from web.");
+    }
     
     self.isInItem = NO;
     self.isTitle = NO;
@@ -92,8 +106,10 @@
 {
     FTATableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FTACell" forIndexPath:indexPath];
     
-    cell.title.text = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"title"];
-    cell.date.text = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"date"];
+    NSNumber *index = [NSNumber numberWithInteger:[self.rssItems count]-indexPath.row - 1 ];
+    
+    cell.title.text = self.rssItems[[index intValue]][@"title"];
+    cell.date.text = self.rssItems[[index intValue]][@"date"];
     
     // Configure the cell...
     
@@ -110,9 +126,16 @@
         
         FTAItemViewController *destController = [segue destinationViewController];
         
-        destController.title = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"title"];
-        destController.date = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"date"];
-        destController.description = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"description"];
+        NSNumber *index = [NSNumber numberWithInteger:[self.rssItems count]-indexPath.row - 1 ];
+        
+        destController.title = self.rssItems[[index intValue]][@"title"];
+        destController.date = self.rssItems[[index intValue]][@"date"];
+        destController.description = self.rssItems[[index intValue]][@"description"];
+        
+        if(self.consoleOutput){
+            NSLog(@"\nTitle:\n %@\n\nDescription:\n %@", self.rssItems[[index intValue]][@"title"], self.rssItems[[index intValue]][@"description"]);
+        }
+        
     }
     else
     {

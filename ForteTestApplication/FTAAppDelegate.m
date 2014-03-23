@@ -16,6 +16,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Register parameters values from settings bundle
+    [self registerDefaultsFromSettingsBundle];
+
     return YES;
 }
 
@@ -59,6 +62,46 @@
             abort();
         } 
     }
+}
+
+#pragma mark - register values from settings bundle
+
+- (void)registerDefaultsFromSettingsBundle
+{
+
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults synchronize];
+    
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    
+    if(!settingsBundle)
+    {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+    
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    
+    for (NSDictionary *prefSpecification in preferences)
+    {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if (key)
+        {
+            // check if value readable in userDefaults
+            id currentObject = [userDefaults objectForKey:key];
+            if (currentObject == nil)
+            {
+                // not readable: set value from Settings.bundle
+                id objectToSet = [prefSpecification objectForKey:@"DefaultValue"];
+                [defaultsToRegister setObject:objectToSet forKey:key];
+            }
+        }
+    }
+    
+    [userDefaults registerDefaults:defaultsToRegister];
+    [userDefaults synchronize];
 }
 
 #pragma mark - Core Data stack
