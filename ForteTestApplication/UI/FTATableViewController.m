@@ -8,6 +8,7 @@
 
 #import "FTATableViewController.h"
 #import "FTATableViewCell.h"
+#import "FTAItemViewController.h"
 #import "FTAXMLParser.h"
 
 @interface FTATableViewController ()
@@ -37,7 +38,7 @@
 {
     [super viewDidLoad];
     
-    FTAXMLParser *xmlParser = [[FTAXMLParser alloc] initWithFile];
+    FTAXMLParser *xmlParser = [[FTAXMLParser alloc] initWithWeb];
     
     self.isInItem = NO;
     self.isTitle = NO;
@@ -75,7 +76,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
@@ -100,12 +100,28 @@
     return cell;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"descriptionSegue"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        
+        
+        FTAItemViewController *destController = [segue destinationViewController];
+        
+        destController.title = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"title"];
+        destController.date = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"date"];
+        destController.description = self.rssItems[[self.rssItems count]-indexPath.row - 1][@"description"];
+    }
+    else
+    {
+        [super prepareForSegue:segue sender:sender];
+    }
+}
+
 #pragma mark - XML Parser delegation
 
--(void)parserDidStartDocument:(NSXMLParser *)parser
-{
-    
-}
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
 {
@@ -150,11 +166,6 @@
     if([elementName isEqualToString:@"title"]) self.isTitle = NO;
     if([elementName isEqualToString:@"pubDate"]) self.isDate = NO;
     if([elementName isEqualToString:@"description"]) self.isDescription = NO;
-}
-
--(void)parserDidEndDocument:(NSXMLParser *)parser
-{
-    
 }
 
 /*
